@@ -28,7 +28,7 @@ function handleKeyPress(e){
     }
 
     if (operation.length === 0 && key === "-"){
-        operation += key
+        operation+= key
         input.innerHTML = operation
         return
     }
@@ -38,9 +38,19 @@ function handleKeyPress(e){
 
     }
 
-    if (operators.indexOf(lastChar) !== -1 && operators.indexOf(key) !== -1){
-        operation = operation.replace(/.$/, key)
+    if (operators.indexOf(lastChar) !== -1 &&operators.indexOf(key) !== -1){
+        input.innerHTML = operation
+        return
+    }
+    if (key) {
+        if (key ===".") decimalAdded = true
+        operation += key
         input.innerHTML = operation
         return
     }
 }
+
+keys.forEach(key =>{
+    key.addEventListener("click", handleKeyPress)
+})
+
